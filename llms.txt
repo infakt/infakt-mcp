@@ -1,0 +1,28 @@
+# inFakt MCP
+
+> inFakt MCP is a hosted Model Context Protocol server that connects AI assistants to Polish invoicing and accounting data in an inFakt account. This repository documents the service and client setup.
+
+MCP endpoint: https://mcp.infakt.pl/mcp
+Transport: Streamable HTTP over HTTPS.
+Authentication: OAuth with PKCE through inFakt browser login.
+Provider: inFakt, https://www.infakt.pl/
+Documentation repository: https://github.com/infakt/infakt-mcp
+
+In ChatGPT, select inFakt from the app or plugin directory and connect your account through OAuth. Availability depends on your account and workspace settings. You can also add the server manually if your ChatGPT account supports custom MCP apps. Other MCP clients can use the endpoint above.
+
+Read invoices, expenses, customers, products, accounting books, income taxes, ZUS contributions, VAT-EU records, tax rates, JPK files, bank accounts and KSeF integration status.
+
+Write tools can create invoices, corrections, OSS invoices, customers and products. They can also update payment status, email invoices and submit invoices to KSeF. Availability depends on the server configuration and the user's permissions.
+
+After authorization, use MCP tools/list to check available tools and their input schemas. Tool names start with infakt_. Use infakt_meta_catalog, infakt_meta_schema, infakt_meta_examples and infakt_meta_dictionary for resource documentation. Fetch all relevant pages before calculating totals. Check monetary units and currencies. Obtain document and customer identifiers from account data. Documentation examples contain sample identifiers.
+
+Write tools return a preview with status confirmation_required. Show it to the user and wait for explicit approval before submitting the unchanged operation with the returned confirmation_token. A preview is not a completed write. Check the result before reporting success or retrying an uncertain operation.
+
+## Documentation
+
+- [inFakt MCP README](https://raw.githubusercontent.com/infakt/infakt-mcp/master/README.md): Service overview, capabilities, setup for Claude, Claude Code, Cursor and ChatGPT, example requests, agent guidance and troubleshooting. Main text in Polish with an English overview.
+
+## Optional
+
+- [inFakt help center](https://pomoc.infakt.pl/hc/pl): Product support in Polish.
+- [inFakt website](https://www.infakt.pl/): Product and account information.
